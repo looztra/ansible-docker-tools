@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  sudo: yes
+  vars:
+    docker_compose_version: 1.5.1
+  roles:
+  - { role: docker-tools, tags: docker-tools }
+  

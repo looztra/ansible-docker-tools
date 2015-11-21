@@ -1,0 +1,2 @@
+- name: compose | download docker-compose binary
+  get_url: url=https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ ansible_system }}-{{ ansible_architecture }} dest={{ docker_tools.target_path }}/docker-compose mode={{ docker_tools.mode }} owner={{ docker_tools.owner }} group={{ docker_tools.group }} force=yes

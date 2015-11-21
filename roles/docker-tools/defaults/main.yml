@@ -1,0 +1,7 @@
+docker_tools:
+  target_path: /usr/local/bin
+  owner: root
+  group: root
+  mode: '0755'
+docker_compose_version: 1.5.1
+docker_machine_version:
