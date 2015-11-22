@@ -1,2 +1,3 @@
-- include: common.yml tags=["common"]
-- include: compose.yml tags=["docker-compose","compose"]
+- include: common.yml tags=common
+- include: compose.yml tags=compose
+- include: machine.yml tags=machine

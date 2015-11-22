@@ -1,0 +1,13 @@
+- name: machine | prepare tmp download path
+  shell: mktemp -d
+  register: mktemp
+
+- name: machine | download binaries to temp dir
+  get_url: url=https://github.com/docker/machine/releases/download/v{{ docker_machine_version }}/docker-machine_linux-amd64.zip dest={{ mktemp.stdout }}/machine.zip
+
+- name: machine | extract and put machine binaries to target path
+  unarchive: src={{ mktemp.stdout }}/machine.zip dest={{ docker_tools.target_path }} copy=no
+
+- name: machine | cleanup tmp dir
+  file: path={{ mktemp.stdout }} state=absent
+
