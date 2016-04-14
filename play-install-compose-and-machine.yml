@@ -2,7 +2,9 @@
 - hosts: localhost
   sudo: yes
   vars:
-    docker_compose_version: 1.5.1
+    docker_compose_version: 1.7.0
+    docker_machine_version: 0.7.0
+    docker_machine_is_zip: false
+
   roles:
   - { role: docker-tools, tags: docker-tools }
-  

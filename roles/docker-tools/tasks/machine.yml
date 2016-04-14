@@ -1,13 +1,21 @@
 - name: machine | prepare tmp download path
   shell: mktemp -d
   register: mktemp
+  when: docker_machine_is_zip
 
 - name: machine | download binaries to temp dir
   get_url: url=https://github.com/docker/machine/releases/download/v{{ docker_machine_version }}/docker-machine_linux-amd64.zip dest={{ mktemp.stdout }}/machine.zip
+  when: docker_machine_is_zip
 
 - name: machine | extract and put machine binaries to target path
   unarchive: src={{ mktemp.stdout }}/machine.zip dest={{ docker_tools.target_path }} copy=no
+  when: docker_machine_is_zip
 
 - name: machine | cleanup tmp dir
   file: path={{ mktemp.stdout }} state=absent
+  when: docker_machine_is_zip
+
+- name: machine | download binary to temp dir
+  get_url: url=https://github.com/docker/machine/releases/download/v{{ docker_machine_version }}/docker-machine-{{ ansible_system }}-{{ ansible_userspace_architecture }} dest={{ docker_tools.target_path }}/docker-machine force=yes
+  when: not docker_machine_is_zip
 

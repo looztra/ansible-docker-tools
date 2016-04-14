@@ -3,5 +3,6 @@ docker_tools:
   owner: root
   group: root
   mode: '0755'
-docker_compose_version: 1.5.1
-docker_machine_version: 0.5.0
+docker_compose_version: 1.7.0
+docker_machine_version: 0.7.0
+docker_machine_is_zip: false
